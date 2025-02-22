@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: logistics-api
+    environment:
+      POSTGRES_DB: logistics-db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      TZ: "UTC-4"
+    ports:
+      - 3838:3838
+    command: -p 3838
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: logistics-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 4848
+    ports:
+      - 4848:4848
+    depends_on:
+      - postgres
