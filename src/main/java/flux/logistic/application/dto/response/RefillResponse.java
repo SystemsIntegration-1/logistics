@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-public class RefilCreationResponse {
+public class RefillResponse {
     UUID refill_id;
     int estimated_delivery;
     String message_refill;

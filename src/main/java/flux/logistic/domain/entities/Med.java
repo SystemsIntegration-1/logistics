@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Med {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(name = "med_id")
   private UUID medId;
 
   @Column(name = "medication_name")
