@@ -1,6 +1,6 @@
 package flux.logistic.application.mappers;
 
-import flux.logistic.application.dto.request.Branch_Refill_Request;
+import flux.logistic.application.dto.request.BranchRefillRequest;
 import flux.logistic.domain.entities.Branch;
 import flux.logistic.domain.entities.Med;
 import flux.logistic.domain.entities.Refill;
@@ -8,9 +8,9 @@ import flux.logistic.domain.entities.Refill;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Refill_mapper {
+public class RefillMapper {
 
-    public static Refill branchRequestToRefill(Branch_Refill_Request refillRequest) {
+    public static Refill branchRequestToRefill(BranchRefillRequest refillRequest) {
         Refill refill = new Refill();
 
         refill.setRefillTimestamp(refillRequest.getTimestamp());

@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Branch_Refill_Request {
+public class BranchRefillRequest {
     UUID branch_id;
     String branch_name;
     List <DtoMed> requested_meds;
