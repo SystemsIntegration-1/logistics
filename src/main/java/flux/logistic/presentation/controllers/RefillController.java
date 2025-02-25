@@ -7,13 +7,14 @@ import flux.logistic.application.dto.response.RefillResponse;
 import flux.logistic.application.services.contracts.IRefillService;
 import flux.logistic.domain.entities.Refill;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/refills")
+@RequestMapping("/refills")
 @RequiredArgsConstructor
 public class RefillController {
 
@@ -21,13 +22,15 @@ public class RefillController {
 
     @PostMapping
     public ResponseEntity<RefillResponse> createRefill(@RequestBody BranchRefillRequest refillRequest) {
-        RefillResponse response = refillService.create(refillRequest);
-        return ResponseEntity.ok(response);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(refillService.create(refillRequest));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<RefillResponse> getRefillById(@PathVariable UUID id) {
-        RefillResponse refillResponse = refillService.getById(id);
-        return ResponseEntity.ok(refillResponse);
+    @GetMapping("/{refillId}")
+    public ResponseEntity<RefillResponse> getRefillById(@PathVariable("refillId") UUID refillId) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(refillService.getById(refillId));
     }
 }

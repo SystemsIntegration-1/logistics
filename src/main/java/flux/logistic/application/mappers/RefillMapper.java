@@ -1,7 +1,7 @@
 package flux.logistic.application.mappers;
 
 import flux.logistic.application.dto.request.BranchRefillRequest;
-import flux.logistic.application.services.concretes.BranchService;
+import flux.logistic.application.dto.response.RefillResponse;
 import flux.logistic.domain.entities.Branch;
 import flux.logistic.domain.entities.Med;
 import flux.logistic.domain.entities.Refill;
@@ -31,4 +31,9 @@ public class RefillMapper {
 
         return refill;
     }
+
+    public static RefillResponse mapRefilltoRefillResponse(Refill refill){
+        return new RefillResponse(refill.getRefillId(), 10,"refill in the way");
+    }
+
 }

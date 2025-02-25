@@ -26,7 +26,7 @@ public class Refill {
   @JoinColumn(name = "branch_id")
   private Branch refillBranch;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.PERSIST)
   @JoinTable(
           name = "refill_med",
           joinColumns = @JoinColumn(name = "refill_id"),

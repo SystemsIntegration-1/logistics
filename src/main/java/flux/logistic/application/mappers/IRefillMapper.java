@@ -9,10 +9,9 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface IRefillMapper {
-    IMedMapper INSTANCE = Mappers.getMapper(IMedMapper.class);
+    IRefillMapper INSTANCE = Mappers.getMapper(IRefillMapper.class);
 
-    @Mapping(target = "refillId", ignore = true)
-    Refill branchRequestToRefill(BranchRefillRequest refillRequest);
+    @Mapping(source = "refillId", target = "refill_id")
     RefillResponse mapRefilltoRefillResponse(Refill refill);
 
 }

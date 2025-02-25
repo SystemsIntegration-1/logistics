@@ -19,18 +19,17 @@ public class RefillService implements IRefillService{
 
     private final IRefillRepository refillRepository;
     private final IBranchRepository branchRepository;
-    private final IRefillMapper refillMapper;
 
     @Override
     public RefillResponse create(BranchRefillRequest create_refill) {
         Refill refill = refillRepository.save(RefillMapper.branchRequestToRefill(create_refill, branchRepository));
-        return new RefillResponse(refill.getRefillId(), 10, "Refill requested");
+        return RefillMapper.mapRefilltoRefillResponse(refill);
     }
 
     @Override
     public RefillResponse getById(UUID refillId) {
         Refill refill = refillRepository.getById(refillId);
-        RefillResponse refillResponse = refillMapper.mapRefilltoRefillResponse(refill);
+        RefillResponse refillResponse = RefillMapper.mapRefilltoRefillResponse(refill);
         return refillResponse;
     }
 
