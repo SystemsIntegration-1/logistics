@@ -1,6 +1,6 @@
 package flux.logistic.application.services.contracts;
 
-import flux.logistic.application.dto.request.BranchRefillRequest;
+import flux.logistic.application.requests.BranchRefillRequest;
 import flux.logistic.application.dto.response.RefillResponse;
 
 import java.util.UUID;

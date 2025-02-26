@@ -1,8 +1,7 @@
 package flux.logistic.application.services.concretes;
 
-import flux.logistic.application.dto.request.BranchRefillRequest;
+import flux.logistic.application.requests.BranchRefillRequest;
 import flux.logistic.application.dto.response.RefillResponse;
-import flux.logistic.application.mappers.IRefillMapper;
 import flux.logistic.application.mappers.RefillMapper;
 import flux.logistic.application.services.contracts.IRefillService;
 import flux.logistic.domain.entities.Refill;

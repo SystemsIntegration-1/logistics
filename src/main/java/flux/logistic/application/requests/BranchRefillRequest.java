@@ -1,4 +1,4 @@
-package flux.logistic.application.dto.request;
+package flux.logistic.application.requests;
 
 import flux.logistic.application.dto.DtoMed;
 import lombok.AllArgsConstructor;

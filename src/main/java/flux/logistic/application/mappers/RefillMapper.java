@@ -1,6 +1,6 @@
 package flux.logistic.application.mappers;
 
-import flux.logistic.application.dto.request.BranchRefillRequest;
+import flux.logistic.application.requests.BranchRefillRequest;
 import flux.logistic.application.dto.response.RefillResponse;
 import flux.logistic.domain.entities.Branch;
 import flux.logistic.domain.entities.Med;

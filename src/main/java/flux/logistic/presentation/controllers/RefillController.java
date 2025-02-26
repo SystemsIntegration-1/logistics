@@ -2,10 +2,9 @@ package flux.logistic.presentation.controllers;
 
 
 
-import flux.logistic.application.dto.request.BranchRefillRequest;
+import flux.logistic.application.requests.BranchRefillRequest;
 import flux.logistic.application.dto.response.RefillResponse;
 import flux.logistic.application.services.contracts.IRefillService;
-import flux.logistic.domain.entities.Refill;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
