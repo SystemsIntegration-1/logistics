@@ -8,11 +8,11 @@
 		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>flux</groupId>
-	<artifactId>logistic</artifactId>
+	<groupId>flux.system.logistics</groupId>
+	<artifactId>logistics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>logistic</name>
-	<description>Flux logistic system</description>
+	<name>logistics</name>
+	<description>Flux System Logistics</description>
 	<url/>
 	<licenses>
 		<license/>
