@@ -1,0 +1,22 @@
+package flux.system.logistics.application.dto;
+
+import flux.system.logistics.domain.entities.Med;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.UUID;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class DtoMed {
+    UUID med_id;
+    String med_name;
+    int med_quantity;
+
+    public DtoMed (Med med) {
+        med_name = med.getName();
+        med_quantity = med.getQuantity();
+    }
+}
