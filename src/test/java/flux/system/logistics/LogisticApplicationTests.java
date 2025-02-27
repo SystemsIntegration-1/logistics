@@ -1,4 +1,4 @@
-package flux.logistic;
+package flux.system.logistics;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package flux.logistic.domain.entities;
+package flux.system.logistics.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,33 +12,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "address")
+@Table(name = "contact")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+@NoArgsConstructor
+public class Contact {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(name = "address_id", nullable = false, updatable = false)
-  private UUID addressId;
+  @Column(name = "contact_id", nullable = false, updatable = false)
+  private UUID contactId;
 
-  @Column(name = "city_name")
-  private String cityName;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-  @Column(name = "country_name")
-  private String countryName;
+  @Column(name = "email", nullable = false)
+  private String email;
 
-  @Column(name = "latitude")
-  private BigDecimal latitude;
+  @Column(name = "phone", nullable = false)
+  private String phone;
 
-  @Column(name = "longitude")
-  private BigDecimal longitude;
-
-  @OneToOne(mappedBy = "address")
+  @OneToOne(mappedBy = "contact")
   private Branch branch;
 }

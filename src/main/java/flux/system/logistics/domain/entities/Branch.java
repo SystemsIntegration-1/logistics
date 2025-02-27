@@ -1,5 +1,6 @@
-package flux.logistic.domain.entities;
+package flux.system.logistics.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,14 +29,16 @@ public class Branch {
   @Column(name = "branch_id", nullable = false, updatable = false)
   private UUID branchId;
 
-  @Column(name = "branch_name")
+  @Column(name = "branch_name", nullable = false)
   private String branchName;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+  @JsonIgnore()
   private Address address;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
+  @JsonIgnore()
   private Contact contact;
 }
