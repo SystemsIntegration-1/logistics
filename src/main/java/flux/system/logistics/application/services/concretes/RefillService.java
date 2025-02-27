@@ -5,7 +5,7 @@ import flux.system.logistics.application.dto.response.RefillResponse;
 import flux.system.logistics.application.mappers.RefillMapper;
 import flux.system.logistics.application.services.contracts.IRefillService;
 import flux.system.logistics.domain.entities.Refill;
-import flux.logistic.domain.repositories.IBranchRepository;
+import flux.system.logistics.domain.repositories.IBranchRepository;
 import flux.system.logistics.domain.repositories.IRefillRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
