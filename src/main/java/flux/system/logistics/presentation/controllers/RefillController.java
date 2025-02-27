@@ -1,4 +1,4 @@
-package flux.system.logistics.controllers;
+package flux.system.logistics.presentation.controllers;
 
 
 
