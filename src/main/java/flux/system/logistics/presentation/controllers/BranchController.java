@@ -3,7 +3,7 @@ package flux.system.logistics.presentation.controllers;
 import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
 import flux.system.logistics.application.responses.BranchResponse;
-import flux.system.logistics.application.services.IBranchService;
+import flux.system.logistics.application.services.contracts.IBranchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

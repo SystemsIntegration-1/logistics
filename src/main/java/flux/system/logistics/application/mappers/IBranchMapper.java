@@ -10,5 +10,7 @@ public interface IBranchMapper {
 
   IBranchMapper INSTANCE = Mappers.getMapper(IBranchMapper.class);
 
-  BranchResponse mapBranchToBranchResponse(Branch branch);
+  BranchResponse mapEntityToBranchResponse(Branch branch);
+
+  Branch mapBranchResponseToEntity(BranchResponse branchResponse);
 }

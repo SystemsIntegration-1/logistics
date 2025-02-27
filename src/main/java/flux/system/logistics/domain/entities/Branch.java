@@ -1,20 +1,13 @@
 package flux.system.logistics.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -41,4 +34,7 @@ public class Branch {
   @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
   @JsonIgnore()
   private Contact contact;
+
+  @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<RefillOrder> refillOrders;
 }

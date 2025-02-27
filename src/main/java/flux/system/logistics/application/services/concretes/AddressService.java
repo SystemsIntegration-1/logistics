@@ -1,9 +1,10 @@
-package flux.system.logistics.application.services;
+package flux.system.logistics.application.services.concretes;
 
 import flux.system.logistics.application.mappers.IAddressMapper;
 import flux.system.logistics.application.requests.AddressCreateRequest;
 import flux.system.logistics.application.requests.AddressUpdateRequest;
 import flux.system.logistics.application.responses.AddressResponse;
+import flux.system.logistics.application.services.contracts.IAddressService;
 import flux.system.logistics.domain.entities.Address;
 import flux.system.logistics.domain.repositories.IAddressRepository;
 

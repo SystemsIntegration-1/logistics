@@ -1,9 +1,10 @@
-package flux.system.logistics.application.services;
+package flux.system.logistics.application.services.concretes;
 
 import flux.system.logistics.application.mappers.IContactMapper;
 import flux.system.logistics.application.requests.ContactCreateRequest;
 import flux.system.logistics.application.requests.ContactUpdateRequest;
 import flux.system.logistics.application.responses.ContactResponse;
+import flux.system.logistics.application.services.contracts.IContactService;
 import flux.system.logistics.domain.entities.Contact;
 import flux.system.logistics.domain.repositories.IContactRepository;
 
