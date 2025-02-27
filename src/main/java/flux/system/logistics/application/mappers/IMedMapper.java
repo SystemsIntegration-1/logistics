@@ -1,7 +1,7 @@
-package flux.logistic.application.mappers;
+package flux.system.logistics.application.mappers;
 
-import flux.logistic.application.dto.DtoMed;
-import flux.logistic.domain.entities.Med;
+import flux.system.logistics.application.dto.DtoMed;
+import flux.system.logistics.domain.entities.Med;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

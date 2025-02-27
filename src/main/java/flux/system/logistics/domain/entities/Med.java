@@ -1,4 +1,4 @@
-package flux.logistic.domain.entities;
+package flux.system.logistics.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

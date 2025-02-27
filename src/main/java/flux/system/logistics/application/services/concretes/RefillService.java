@@ -1,12 +1,12 @@
-package flux.logistic.application.services.concretes;
+package flux.system.logistics.application.services.concretes;
 
-import flux.logistic.application.requests.BranchRefillRequest;
-import flux.logistic.application.dto.response.RefillResponse;
-import flux.logistic.application.mappers.RefillMapper;
-import flux.logistic.application.services.contracts.IRefillService;
-import flux.logistic.domain.entities.Refill;
+import flux.system.logistics.application.requests.BranchRefillRequest;
+import flux.system.logistics.application.dto.response.RefillResponse;
+import flux.system.logistics.application.mappers.RefillMapper;
+import flux.system.logistics.application.services.contracts.IRefillService;
+import flux.system.logistics.domain.entities.Refill;
 import flux.logistic.domain.repositories.IBranchRepository;
-import flux.logistic.domain.repositories.IRefillRepository;
+import flux.system.logistics.domain.repositories.IRefillRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

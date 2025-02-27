@@ -1,6 +1,6 @@
-package flux.logistic.application.dto;
+package flux.system.logistics.application.dto;
 
-import flux.logistic.domain.entities.Med;
+import flux.system.logistics.domain.entities.Med;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

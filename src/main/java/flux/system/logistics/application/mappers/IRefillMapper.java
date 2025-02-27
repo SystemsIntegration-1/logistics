@@ -1,7 +1,7 @@
-package flux.logistic.application.mappers;
+package flux.system.logistics.application.mappers;
 
-import flux.logistic.application.dto.response.RefillResponse;
-import flux.logistic.domain.entities.Refill;
+import flux.system.logistics.application.dto.response.RefillResponse;
+import flux.system.logistics.domain.entities.Refill;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

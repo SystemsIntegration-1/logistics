@@ -1,4 +1,4 @@
-package flux.logistic.application.dto.response;
+package flux.system.logistics.application.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

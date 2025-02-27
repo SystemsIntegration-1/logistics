@@ -1,4 +1,4 @@
-package flux.logistic.presentation.controllers;
+package flux.system.logistics.controllers;
 
 import flux.logistic.application.requests.BranchCreateRequest;
 import flux.logistic.application.responses.BranchResponse;
