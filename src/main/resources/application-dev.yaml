@@ -1,11 +1,8 @@
-server:
-  port: '8080'
-
 spring:
   datasource:
-    url: '${DEV_DB_URL}'
-    username: '${DEV_DB_USERNAME}'
-    password: '${DEV_DB_PASSWORD}'
+    url: 'jdbc:postgresql://localhost:5433/logistics_db'
+    username: 'user'
+    password: 'password'
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 20000
@@ -19,10 +16,10 @@ spring:
     validate-on-migrate: true
     baseline-on-migrate: true
 
-  jpa:
-    show-sql: true
+jpa:
+  show-sql: true
+  hibernate:
+    ddl-auto: validate
+  properties:
     hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+      dialect: org.hibernate.dialect.PostgreSQLDialect
