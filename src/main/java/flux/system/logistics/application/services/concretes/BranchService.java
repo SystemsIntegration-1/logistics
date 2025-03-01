@@ -1,9 +1,12 @@
-package flux.system.logistics.application.services;
+package flux.system.logistics.application.services.concretes;
 
 import flux.system.logistics.application.mappers.IBranchMapper;
 import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
+import flux.system.logistics.application.services.contracts.IAddressService;
+import flux.system.logistics.application.services.contracts.IBranchService;
+import flux.system.logistics.application.services.contracts.IContactService;
 import flux.system.logistics.domain.entities.Address;
 import flux.system.logistics.domain.entities.Branch;
 import flux.system.logistics.domain.entities.Contact;
@@ -37,7 +40,7 @@ public class BranchService implements IBranchService {
   public Optional<BranchResponse> getBranchById(UUID branchId) {
     return branchRepository
             .findById(branchId)
-            .map(branchMapper::mapBranchToBranchResponse);
+            .map(branchMapper::mapEntityToBranchResponse);
   }
 
   @Override
@@ -50,7 +53,7 @@ public class BranchService implements IBranchService {
     return branchRepository
             .findAll()
             .stream()
-            .map(branchMapper::mapBranchToBranchResponse)
+            .map(branchMapper::mapEntityToBranchResponse)
             .collect(Collectors.toList());
   }
 
@@ -74,7 +77,7 @@ public class BranchService implements IBranchService {
 
     branchRepository.save(branch);
 
-    return branchMapper.mapBranchToBranchResponse(branch);
+    return branchMapper.mapEntityToBranchResponse(branch);
   }
 
   @Override
@@ -103,7 +106,7 @@ public class BranchService implements IBranchService {
 
               branchRepository.save(branch);
 
-              return branchMapper.mapBranchToBranchResponse(branch);
+              return branchMapper.mapEntityToBranchResponse(branch);
             })
             .orElseThrow(() -> new RuntimeException("Branch not found with id: " + branchId));
   }

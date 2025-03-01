@@ -1,4 +1,4 @@
-package flux.system.logistics.application.services;
+package flux.system.logistics.application.services.contracts;
 
 import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
