@@ -8,8 +8,8 @@ services:
       POSTGRES_PASSWORD: ${DEV_DB_PASSWORD}
       TZ: "UTC-4"
     ports:
-      - 3838:3838
-    command: -p 3838
+      - 5433:5432
+    command: -p 5432
     env_file:
       - .env
 

@@ -8,6 +8,9 @@ import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.application.responses.RefillOrderResponse;
 import flux.system.logistics.application.services.contracts.IBranchService;
 import flux.system.logistics.application.services.contracts.IRefillOrderService;
+import flux.system.logistics.application.services.external.InventaryService;
+import flux.system.logistics.application.services.external.mapper.InventoryMapper;
+import flux.system.logistics.application.services.external.model.InventoryMovementRequest;
 import flux.system.logistics.domain.entities.Branch;
 import flux.system.logistics.domain.entities.OrderItem;
 import flux.system.logistics.domain.entities.OrderStatus;
@@ -26,17 +29,19 @@ public class RefillOrderService implements IRefillOrderService {
     private final IBranchMapper branchMapper;
     private final IRefillOrderMapper refillOrderMapper;
     private final IOrderItemMapper orderItemMapper;
+    private final InventaryService inventaryService;
 
     public RefillOrderService(IRefillOrderRepository refillOrderRepository,
                               IBranchService branchService,
                               IBranchMapper branchMapper,
                               IOrderItemMapper orderItemMapper,
-                              IRefillOrderMapper refillOrderMapper) {
+                              IRefillOrderMapper refillOrderMapper, InventaryService inventaryService) {
         this.refillOrderRepository = refillOrderRepository;
         this.branchService = branchService;
         this.branchMapper = branchMapper;
         this.orderItemMapper = orderItemMapper;
         this.refillOrderMapper = refillOrderMapper;
+        this.inventaryService = inventaryService;
     }
 
     @Override
@@ -80,6 +85,18 @@ public class RefillOrderService implements IRefillOrderService {
                 .toList();
 
         refillOrder.setItems(orderItems);
+
+        System.out.println("detecta post");
+        if (refillOrder != null && refillOrder.getItems() != null) {
+            for (int x = 0; x < refillOrder.getItems().size(); x++) {
+                InventoryMovementRequest inventoryMovementRequest = InventoryMapper.mapToInventoryMovement(refillOrder, x);
+                if (inventoryMovementRequest != null) {
+                    inventoryMovementRequest.setProductId(request.items().get(x).productId());
+                    inventaryService.postInventoryMovement(inventoryMovementRequest);
+                    System.out.println("mando el post");
+                }
+            }
+        }
 
         refillOrderRepository.save(refillOrder);
 
