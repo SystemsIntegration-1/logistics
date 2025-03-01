@@ -1,6 +1,7 @@
 package flux.system.logistics.application.services.concretes;
 
 import flux.system.logistics.application.mappers.IBranchMapper;
+import flux.system.logistics.application.responses.BranchMedQueryResponse;
 import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
@@ -12,11 +13,11 @@ import flux.system.logistics.domain.entities.Branch;
 import flux.system.logistics.domain.entities.Contact;
 import flux.system.logistics.domain.repositories.IBranchRepository;
 
+import flux.system.logistics.presentation.controllers.consumer.BranchApiConsumer;
+import flux.system.logistics.presentation.controllers.consumer.GeolocationApiConsumer;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -124,5 +125,36 @@ public class BranchService implements IBranchService {
               return true;
             })
             .orElse(false);
+  }
+
+  @Override
+  public Optional<List<Branch>> findClosestBranch(UUID branchId, UUID medId, int requiredAmount) {
+    Optional<Branch> optional = branchRepository.findById(branchId);
+    if (optional.isEmpty()){
+      System.out.println("Unexpected error");
+      return Optional.empty();
+    }
+    Branch origin = optional.get();
+
+    List<Branch> branches = branchRepository.findAll();
+    List<Branch> branchWithMedList = new ArrayList<>();
+
+    BranchApiConsumer branchApiConsumer = new BranchApiConsumer();
+    branches.forEach(b -> {
+      // TODO: obtain branch's instance address from b
+      BranchMedQueryResponse response = branchApiConsumer.medBranchQuery("localhost:8080/branch1", medId);
+      if (response.availableQuantity() >= requiredAmount){
+        branchWithMedList.add(b);
+      }
+    });
+
+    Map<Integer, Branch> distanceBranch = new HashMap<>();
+    GeolocationApiConsumer geolocationApiConsumer = new GeolocationApiConsumer();
+    branchWithMedList.forEach(b -> {
+      int distance = geolocationApiConsumer.measureDistanceTwoPoints(origin.getAddress(), b.getAddress());
+      distanceBranch.put(distance, b);
+    });
+
+    return Optional.of(distanceBranch.values().stream().toList());
   }
 }

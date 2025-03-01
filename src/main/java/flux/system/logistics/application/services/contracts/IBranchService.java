@@ -22,4 +22,6 @@ public interface IBranchService {
   BranchResponse updateBranchById(UUID id, BranchUpdateRequest branchUpdateRequest);
 
   boolean deleteBranchById(UUID branchId);
+
+  Optional<List<Branch>> findClosestBranch(UUID branchId, UUID medId, int requiredAmount);
 }
