@@ -2,10 +2,10 @@ package flux.system.logistics.application.mappers;
 
 import flux.system.logistics.application.requests.BranchRefillRequest;
 import flux.system.logistics.application.dto.response.RefillResponse;
-import flux.logistic.domain.entities.Branch;
+import flux.system.logistics.domain.entities.Branch;
 import flux.system.logistics.domain.entities.Med;
 import flux.system.logistics.domain.entities.Refill;
-import flux.logistic.domain.repositories.IBranchRepository;
+import flux.system.logistics.domain.repositories.IBranchRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
