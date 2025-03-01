@@ -29,18 +29,19 @@ public class RefillOrderService implements IRefillOrderService {
     private final IBranchMapper branchMapper;
     private final IRefillOrderMapper refillOrderMapper;
     private final IOrderItemMapper orderItemMapper;
-    private InventaryService inventaryService;
+    private final InventaryService inventaryService;
 
     public RefillOrderService(IRefillOrderRepository refillOrderRepository,
                               IBranchService branchService,
                               IBranchMapper branchMapper,
                               IOrderItemMapper orderItemMapper,
-                              IRefillOrderMapper refillOrderMapper) {
+                              IRefillOrderMapper refillOrderMapper, InventaryService inventaryService) {
         this.refillOrderRepository = refillOrderRepository;
         this.branchService = branchService;
         this.branchMapper = branchMapper;
         this.orderItemMapper = orderItemMapper;
         this.refillOrderMapper = refillOrderMapper;
+        this.inventaryService = inventaryService;
     }
 
     @Override
@@ -83,17 +84,19 @@ public class RefillOrderService implements IRefillOrderService {
                 })
                 .toList();
 
+        refillOrder.setItems(orderItems);
+
+        System.out.println("detecta post");
         if (refillOrder != null && refillOrder.getItems() != null) {
             for (int x = 0; x < refillOrder.getItems().size(); x++) {
                 InventoryMovementRequest inventoryMovementRequest = InventoryMapper.mapToInventoryMovement(refillOrder, x);
-                if (request != null) {
+                if (inventoryMovementRequest != null) {
                     inventoryMovementRequest.setProductId(request.items().get(x).productId());
                     inventaryService.postInventoryMovement(inventoryMovementRequest);
+                    System.out.println("mando el post");
                 }
             }
         }
-
-        refillOrder.setItems(orderItems);
 
         refillOrderRepository.save(refillOrder);
 
