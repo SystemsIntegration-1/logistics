@@ -68,8 +68,11 @@ public class BranchController {
             .body("Branch deleted successfully");
   }
 
-  @GetMapping("/{medicineId}{branchId}{requiredAmount}")
-  public ResponseEntity<?> findClosestMed(@PathVariable("medicineId") UUID medId, @PathVariable("branchId") UUID branchId, int requiredAmount) {
+  @GetMapping("/request-med/{branchId}")
+  public ResponseEntity<?> findClosestMed(
+          @PathVariable("branchId") UUID branchId,
+          @RequestParam("med-id") UUID medId,
+          @RequestParam("required-amount") int requiredAmount) {
     Optional<List<Branch>> response = branchService.findClosestBranch(branchId, medId, requiredAmount);
     if (response.isEmpty()){
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not find available med");

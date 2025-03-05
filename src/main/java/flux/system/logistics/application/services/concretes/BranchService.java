@@ -142,8 +142,8 @@ public class BranchService implements IBranchService {
     BranchApiConsumer branchApiConsumer = new BranchApiConsumer();
     branches.forEach(b -> {
       // TODO: obtain branch's instance address from b
-      BranchMedQueryResponse response = branchApiConsumer.medBranchQuery("localhost:8080/branch1", medId);
-      if (response.availableQuantity() >= requiredAmount){
+      BranchMedQueryResponse response = branchApiConsumer.medBranchQuery("http://localhost:5027/", medId);
+      if (response.stock() >= requiredAmount){
         branchWithMedList.add(b);
       }
     });

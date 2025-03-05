@@ -7,12 +7,11 @@ import org.springframework.web.client.RestTemplate;
 import java.util.UUID;
 
 public class BranchApiConsumer {
-    private static String HOST = "localhost:8080/stock";
-
+    public static String PATH = "api/batches";
 
     public BranchMedQueryResponse medBranchQuery(String address, UUID medId) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<BranchMedQueryResponse> response = restTemplate.getForEntity(String.format("%s/%s/%s", address, HOST, medId), BranchMedQueryResponse.class);
+        ResponseEntity<BranchMedQueryResponse> response = restTemplate.getForEntity(String.format("%s/%s/%s", address, PATH, medId), BranchMedQueryResponse.class);
 
         if (response.getStatusCode().isError()) {
             System.out.printf("x_x culdn't not connect to %s%n", address);
