@@ -2,6 +2,7 @@ package flux.system.logistics.application.services.contracts;
 
 import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
+import flux.system.logistics.application.responses.BranchGeoResponse;
 import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.domain.entities.Branch;
 
@@ -23,5 +24,5 @@ public interface IBranchService {
 
   boolean deleteBranchById(UUID branchId);
 
-  Optional<List<Branch>> findClosestBranch(UUID branchId, UUID medId, int requiredAmount);
+  Optional<List<BranchGeoResponse>> findClosestBranch(UUID branchId, UUID medId, int requiredAmount);
 }

@@ -1,6 +1,7 @@
 package flux.system.logistics.application.services.concretes;
 
 import flux.system.logistics.application.mappers.IBranchMapper;
+import flux.system.logistics.application.responses.BranchGeoResponse;
 import flux.system.logistics.application.responses.BranchMedQueryResponse;
 import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.application.requests.BranchCreateRequest;
@@ -128,7 +129,7 @@ public class BranchService implements IBranchService {
   }
 
   @Override
-  public Optional<List<Branch>> findClosestBranch(UUID branchId, UUID medId, int requiredAmount) {
+  public Optional<List<BranchGeoResponse>> findClosestBranch(UUID branchId, UUID medId, int requiredAmount) {
     Optional<Branch> optional = branchRepository.findById(branchId);
     if (optional.isEmpty()){
       System.out.println("Unexpected error");
@@ -155,6 +156,11 @@ public class BranchService implements IBranchService {
       distanceBranch.put(distance, b);
     });
 
-    return Optional.of(distanceBranch.values().stream().toList());
+    List<BranchGeoResponse> geoResponses = new ArrayList<>();
+    distanceBranch.values().forEach(b -> {
+      geoResponses.add(new BranchGeoResponse(b.getBranchId(), b.getBranchName(), b.getAddress().getLatitude(), b.getAddress().getLongitude()));
+    });
+
+    return Optional.of(geoResponses);
   }
 }

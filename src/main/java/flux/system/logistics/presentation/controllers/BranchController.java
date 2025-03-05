@@ -2,6 +2,7 @@ package flux.system.logistics.presentation.controllers;
 
 import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
+import flux.system.logistics.application.responses.BranchGeoResponse;
 import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.application.services.contracts.IBranchService;
 import flux.system.logistics.domain.entities.Branch;
@@ -73,7 +74,7 @@ public class BranchController {
           @PathVariable("branchId") UUID branchId,
           @RequestParam("med-id") UUID medId,
           @RequestParam("required-amount") int requiredAmount) {
-    Optional<List<Branch>> response = branchService.findClosestBranch(branchId, medId, requiredAmount);
+    Optional<List<BranchGeoResponse>> response = branchService.findClosestBranch(branchId, medId, requiredAmount);
     if (response.isEmpty()){
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not find available med");
     }
