@@ -4,10 +4,13 @@ import flux.system.logistics.application.requests.BranchCreateRequest;
 import flux.system.logistics.application.requests.BranchUpdateRequest;
 import flux.system.logistics.application.responses.BranchResponse;
 import flux.system.logistics.application.services.contracts.IBranchService;
+import flux.system.logistics.domain.entities.Branch;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -63,5 +66,18 @@ public class BranchController {
     return ResponseEntity
             .status(HttpStatus.OK)
             .body("Branch deleted successfully");
+  }
+
+  @GetMapping("/request-med/{branchId}")
+  public ResponseEntity<?> findClosestMed(
+          @PathVariable("branchId") UUID branchId,
+          @RequestParam("med-id") UUID medId,
+          @RequestParam("required-amount") int requiredAmount) {
+    Optional<List<Branch>> response = branchService.findClosestBranch(branchId, medId, requiredAmount);
+    if (response.isEmpty()){
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not find available med");
+    }
+
+    return ResponseEntity.status(HttpStatus.OK).body(response.get());
   }
 }
