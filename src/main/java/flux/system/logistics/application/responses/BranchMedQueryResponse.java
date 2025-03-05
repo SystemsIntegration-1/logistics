@@ -1,11 +1,12 @@
 package flux.system.logistics.application.responses;
 
+import java.util.Date;
 import java.util.UUID;
 
-// this is
 public record BranchMedQueryResponse (
+   UUID id,
    UUID productId,
    int stock,
-   String entryDate,
-   String expirationDate
+   Date entryDate,
+   Date expirationDate
 ){}
